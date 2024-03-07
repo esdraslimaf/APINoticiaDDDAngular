@@ -3,6 +3,7 @@ using Entidades.Entidades;
 using Infraestrutura.Configuracoes;
 using Infraestrutura.Repositorio.Genericos;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,11 @@ namespace Infraestrutura.Repositorio
 {
     public class RepositorioUsuario : RepositorioGenerico<ApplicationUser>, IUsuario
     {
-        private readonly DbContextOptions<MyContext> _OptionsBuilder;
+       /* private readonly DbContextOptions<MyContext> _OptionsBuilder;
         public RepositorioUsuario()
         {
             _OptionsBuilder = new DbContextOptions<MyContext>();
-        }
+        } * Esse código seria desnecessário devido ao OnConfiguring do MyContext, além de que o OptionsBuilder criado acima é sem configs/
         /* Estamos passando um objeto DbContextOptions<MyContext> vazio para o construtor MyContext. Isso significa que estamos criando um contexto sem configurações específicas.. Essa abordagem pode ser usada se quisermos usar as configurações padrão definidas no construtor de DbContext da sua classe MyContext. */
 
         public async Task<bool> AdicionarUsuario(string email, string senha, int idade, string celular)
@@ -44,6 +45,23 @@ namespace Infraestrutura.Repositorio
                 return false;
             }
             return true;
+        }
+
+        public async Task<bool> ExisteUsuario(string email, string senha)
+        {
+            try
+            {
+                using (var db = new MyContext())
+                {
+                    return await db.ApplicationUsers
+                        .AsNoTracking()
+                        .AnyAsync(obj => obj.Email == email && obj.PasswordHash == senha);
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

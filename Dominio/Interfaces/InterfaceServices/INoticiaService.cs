@@ -10,10 +10,8 @@ namespace Dominio.Interfaces.InterfaceServices
         public interface INoticiaService
         {
             Task AdicionarNoticia(Noticia noticia);
-            Task<Noticia> ObterNoticiaPorId(int id);
-            Task<IEnumerable<Noticia>> ObterTodasNoticias();
+            Task<IEnumerable<Noticia>> ObterTodasNoticiasAtivas();
             Task AtualizarNoticia(Noticia noticia);
-            Task RemoverNoticia(Noticia noticia);
         }
    
 }

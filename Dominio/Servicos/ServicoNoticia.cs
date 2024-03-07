@@ -42,19 +42,11 @@ namespace Dominio.Servicos
             }
         }
 
-        public Task<Noticia> ObterNoticiaPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public async Task<IEnumerable<Noticia>> ObterTodasNoticias()
+        public async Task<IEnumerable<Noticia>> ObterTodasNoticiasAtivas()
         {
             return await _reponoticia.ListarNoticias(n=>n.Ativo);
         }
 
-        public Task RemoverNoticia(Noticia noticia)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
