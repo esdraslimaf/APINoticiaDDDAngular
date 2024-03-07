@@ -15,6 +15,7 @@ namespace Infraestrutura.Configuracoes
         {
             
         }
+        public MyContext() { }
 
         public DbSet<Noticia> Noticias { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
