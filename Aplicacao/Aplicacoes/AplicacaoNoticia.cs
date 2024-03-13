@@ -46,8 +46,6 @@ namespace Aplicacao.Aplicacoes
             await _INoticia.Atualizar(obj);
         }
 
-        
-
         public async Task<Noticia> ObterPorId(int id)
         {
             return await _INoticia.ObterPorId(id);
