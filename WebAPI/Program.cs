@@ -10,8 +10,11 @@ using Entidades.Entidades;
 using Infraestrutura.Configuracoes;
 using Infraestrutura.Repositorio;
 using Infraestrutura.Repositorio.Genericos;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using WebAPI.Token;
 
 namespace WebAPI
 {
@@ -45,6 +48,37 @@ namespace WebAPI
             //Interfaces da camada Aplicação(Utiliza Serviços e Repositórios do Domínio/Infra)
             builder.Services.AddScoped<IAplicacaoNoticia, AplicacaoNoticia>();
             builder.Services.AddScoped<IAplicacaoUsuario, AplicacaoUsuario>();
+
+            //Token JWT, além de anteriormente ter sido criadas as JwtSecurityKey.cs, TokenJWT.cs, TokenJWTBuilder.cs
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+       .AddJwtBearer(option =>
+       {
+           option.TokenValidationParameters = new TokenValidationParameters
+           {
+               ValidateIssuer = false,
+               ValidateAudience = false,
+               ValidateLifetime = true,
+               ValidateIssuerSigningKey = true,
+
+               ValidIssuer = "Teste.Securiry.Bearer", //Emissor
+               ValidAudience = "Teste.Securiry.Bearer", //Destinatários/Público
+               IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
+           };
+
+           option.Events = new JwtBearerEvents
+           {
+               OnAuthenticationFailed = context =>
+               {
+                   Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+                   return Task.CompletedTask;
+               },
+               OnTokenValidated = context =>
+               {
+                   Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+                   return Task.CompletedTask;
+               }
+           };
+       });
 
 
             var app = builder.Build();
