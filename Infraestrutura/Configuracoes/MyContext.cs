@@ -11,11 +11,11 @@ namespace Infraestrutura.Configuracoes
 {
     public class MyContext : IdentityDbContext<ApplicationUser>
     {
-        public MyContext(DbContextOptions<MyContext> options):base(options)
-        {
-            
-        }
-        public MyContext() { }
+         public MyContext(DbContextOptions<MyContext> options):base(options)
+         {
+
+         }
+
 
         public DbSet<Noticia> Noticias { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

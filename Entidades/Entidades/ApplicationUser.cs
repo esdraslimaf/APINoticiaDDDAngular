@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Entidades.Enums;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace Entidades.Entidades
     {
         public int Idade { get; set; }
         public string Celular { get; set; } 
+        public ETipoUsuario TipoUsuario { get; set; }
     }
 }

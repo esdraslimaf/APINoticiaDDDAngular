@@ -1,5 +1,6 @@
 ﻿using Dominio.Interfaces;
 using Entidades.Entidades;
+using Entidades.Enums;
 using Infraestrutura.Configuracoes;
 using Infraestrutura.Repositorio.Genericos;
 using Microsoft.EntityFrameworkCore;
@@ -16,25 +17,26 @@ namespace Infraestrutura.Repositorio
 {
     public class RepositorioUsuario : RepositorioGenerico<ApplicationUser>, IUsuario
     {
-       /* private readonly DbContextOptions<MyContext> _OptionsBuilder;
+        private readonly DbContextOptions<MyContext> _OptionsBuilder;
         public RepositorioUsuario()
         {
             _OptionsBuilder = new DbContextOptions<MyContext>();
-        } * Esse código seria desnecessário devido ao OnConfiguring do MyContext, além de que o OptionsBuilder criado acima é sem configs/
+        } // Esse código seria desnecessário devido ao OnConfiguring do MyContext, além de que o OptionsBuilder criado acima é sem configs
         /* Estamos passando um objeto DbContextOptions<MyContext> vazio para o construtor MyContext. Isso significa que estamos criando um contexto sem configurações específicas.. Essa abordagem pode ser usada se quisermos usar as configurações padrão definidas no construtor de DbContext da sua classe MyContext. */
 
         public async Task<bool> AdicionarUsuario(string email, string senha, int idade, string celular)
         {
             try
             {
-                using (var db = new MyContext())
+                using (var db = new MyContext(_OptionsBuilder))
                 {
                     await db.ApplicationUsers.AddAsync(new ApplicationUser
                     {
                         Email = email,
                         PasswordHash = senha,
                         Idade = idade,
-                        Celular = celular
+                        Celular = celular,
+                        TipoUsuario = ETipoUsuario.Comum
                     });
                     await db.SaveChangesAsync();
                     
@@ -51,7 +53,7 @@ namespace Infraestrutura.Repositorio
         {
             try
             {
-                using (var db = new MyContext())
+                using (var db = new MyContext(_OptionsBuilder))
                 {
                     return await db.ApplicationUsers
                         .AsNoTracking()

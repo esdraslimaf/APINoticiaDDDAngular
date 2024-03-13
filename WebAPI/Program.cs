@@ -32,9 +32,8 @@ namespace WebAPI
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<MyContext>(options =>
-             options.UseSqlServer(
-                 builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+             options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<MyContext>();
 
             //Interfaces e Repositórios
@@ -62,7 +61,7 @@ namespace WebAPI
 
                ValidIssuer = "Teste.Securiry.Bearer", //Emissor
                ValidAudience = "Teste.Securiry.Bearer", //Destinatários/Público
-               IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
+               IssuerSigningKey = JwtSecurityKey.Create("43443FDFDF34DF34343fdf344SDFSDFSDFSDFSDF4545354345SDFGDFGDFGDFGdffgfdGDFGDGR%")
            };
 
            option.Events = new JwtBearerEvents
