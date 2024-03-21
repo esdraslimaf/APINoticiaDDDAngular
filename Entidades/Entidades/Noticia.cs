@@ -33,7 +33,7 @@ namespace Entidades.Entidades
         public DateTime DataAlteracao { get; set; }
 
 
-        public string UserId { get; set; }
+        public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

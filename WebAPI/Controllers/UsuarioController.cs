@@ -41,14 +41,16 @@ namespace WebAPI.Controllers
 
             if (result)
             {
+                var idusuarioresult = await _aplicacaoUsuario.RetornaIdUsuario(login.Email);
+
                 var token = new TokenJWTBuilder()
-                     .AddSecurityKey(JwtSecurityKey.Create("43443FDFDF34DF34343fdf344SDFSDFSDFSDFSDF4545354345SDFGDFGDFGDFGdffgfdGDFGDGR%"))
-                 .AddSubject("Aprendizado API DDD para Angular")
-                 .AddIssuer("Esdras.Securiry.Bearer")
-                 .AddAudience("Publico.Securiry.Bearer")
-                 .AddClaim("UsuarioAPI", "1")
-                 .AddExpiry(5)
-                 .Builder();
+                    .AddSecurityKey(JwtSecurityKey.Create("43443FDFDF34DF34343fdf344SDFSDFSDFSDFSDF4545354345SDFGDFGDFGDFGdffgfdGDFGDGR%"))
+                .AddSubject("Aprendizado API DDD para Angular")
+                .AddIssuer("Esdras.Securiry.Bearer")
+                .AddAudience("Publico.Securiry.Bearer")
+                .AddClaim("UsuarioId", idusuarioresult)
+                .AddExpiry(5)
+                .Builder();
 
                 return Ok(token.value);
             }
@@ -89,12 +91,14 @@ namespace WebAPI.Controllers
 
             if (result.Succeeded)
             {
+                var idusuarioresult = await _aplicacaoUsuario.RetornaIdUsuario(login.Email);
+
                 var token = new TokenJWTBuilder()
                     .AddSecurityKey(JwtSecurityKey.Create("43443FDFDF34DF34343fdf344SDFSDFSDFSDFSDF4545354345SDFGDFGDFGDFGdffgfdGDFGDGR%"))
                 .AddSubject("Aprendizado API DDD para Angular")
                 .AddIssuer("Esdras.Securiry.Bearer")
                 .AddAudience("Publico.Securiry.Bearer")
-                .AddClaim("UsuarioAPI", "1")
+                .AddClaim("UsuarioId", idusuarioresult)
                 .AddExpiry(5)
                 .Builder();
 
