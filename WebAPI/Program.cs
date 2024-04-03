@@ -84,7 +84,12 @@ namespace WebAPI
 
             var app = builder.Build();
 
-            // var urlClientCors = "https://url.com.br";
+            // Habilitando CORS para a API ser consumida pelo Angular
+            var urlClientCors = "http://localhost:4200";
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader().WithOrigins(urlClientCors));
             // app.UseCors(b => b.WithOrigins(urlClientCors));
 
             // Configure the HTTP request pipeline.
