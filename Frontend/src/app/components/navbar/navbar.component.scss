@@ -1,0 +1,53 @@
+/* Estilos para o navbar */
+.navbar-site {
+    display: flex; /* Define o modelo de layout como flexível */
+    height: 50px; /* Define a altura do navbar */
+    background-color: rgb(89, 21, 153); /* Define a cor de fundo */
+    justify-content: center; /* Centraliza horizontalmente os elementos filhos */
+    align-items: center; /* Centraliza verticalmente os elementos filhos */
+    position:fixed; /* Define a posição fixa para que o navbar fique no topo */
+    width: 100%; /* Define a largura como 100% para ocupar toda a largura da tela */
+
+    /* Estilos para o logotipo dentro do navbar */
+    .logo {
+        height: 30px; /* Define a altura do logotipo */
+        width: 120px; /* Define a largura do logotipo */
+        background: aliceblue; /* Define a cor de fundo do logotipo */
+        margin: 8px; /* Adiciona margem ao redor do logotipo */
+    }
+
+    /* Estilos para o grupo de usuário/sair dentro do navbar */
+    .grupo-user-sair {
+        margin-left: auto; /* Alinha o grupo à direita */
+        display: flex; /* Define o modelo de layout como flexível */
+        justify-content: center; /* Centraliza horizontalmente os elementos filhos */
+        align-items: center; /* Centraliza verticalmente os elementos filhos */
+
+        /* Estilos para a foto do usuário dentro do grupo de usuário/sair */
+        .foto-usuario {
+            height: 40px; /* Define a altura da foto do usuário */
+            width: 40px; /* Define a largura da foto do usuário */
+            background: white; /* Define a cor de fundo da foto do usuário */
+            border-radius: 100%; /* Adiciona borda arredondada para formar um círculo */
+        }
+
+        /* Estilos para o botão de sair dentro do grupo de usuário/sair */
+        .btn-sair {
+            height: 40px; /* Define a altura do botão de sair */
+            width: 50px; /* Define a largura do botão de sair */
+            background: white; /* Define a cor de fundo do botão de sair */
+            margin: 8px; /* Adiciona margem ao redor do botão de sair */
+            cursor: pointer; /* Define o cursor como um ponteiro ao passar por cima do botão */
+            display: flex; /* Define o modelo de layout como flexível */
+            align-items: center; /* Centraliza verticalmente os elementos filhos */
+            text-align: center; /* Centraliza horizontalmente o texto */
+            justify-content: center; /* Centraliza verticalmente o texto */
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* Define a família da fonte */
+        }
+
+        /* Estilos de hover para o botão de sair */
+        .btn-sair:hover {
+            background-color: #abadaf; /* Altera a cor de fundo ao passar o mouse */
+        }
+    }
+}

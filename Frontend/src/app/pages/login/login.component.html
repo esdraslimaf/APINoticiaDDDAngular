@@ -1,0 +1,29 @@
+<div class="tela-login">
+<form class="formulario" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+    <div>
+      <label for="email">email:</label>
+      <input class="email-input" type="text" id="email" formControlName="email" placeholder="Digite o email">
+    </div>
+
+    <div class="mensagem-erro" *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
+        O e-mail é obrigatório!
+      </div>
+      <div class="mensagem-erro" *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
+        O e-mail está em um formato inválido!
+      </div>
+  
+      <div>
+      <label for="senha">senha:</label>
+      <input class="email-input" type="password" id="senha" formControlName="senha" placeholder="Digite a senha">
+    </div>
+
+    <div class="mensagem-erro" *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched">
+        a senha é obrigatória!
+      </div>
+
+
+    <button class="submit-input" type="submit">Enviar</button>
+  </form>
+</div>

@@ -1,0 +1,62 @@
+/* Estilos para o contêiner de notícias */
+.conteudos-notícias {
+    display: flex; /* Define o contêiner como flexível */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
+
+    /* Estilos para a lista de notícias dentro do contêiner */
+    .lista-noticias {
+        border-radius: 10px; /* Define a borda arredondada */
+        background: rgb(255, 255, 255); /* Define a cor de fundo */
+        box-shadow: 0 5px 8px 0 gray; /* Adiciona sombra */
+        text-align: center; /* Alinha o texto ao centro */
+        min-height: 350px; /* Define a altura mínima */
+        transition: all 0.5s ease-in-out; /* Adiciona uma transição suave */
+        margin: 60px 16px; /* Adiciona margem */
+        overflow: auto; /* Adiciona rolagem se necessário */
+
+        /* Estilos para cada notícia dentro da lista */
+        .noticia {
+            border-radius: 7px; /* Define a borda arredondada */
+            background: rgb(255, 255, 255); /* Define a cor de fundo */
+            box-shadow: 0 1px 5px 0 rgb(159, 38, 240); /* Adiciona sombra */
+            text-align: center; /* Alinha o texto ao centro */
+            margin: 16px; /* Adiciona margem */
+            padding: 8px; /* Adiciona preenchimento */
+
+            /* Estilos para o cabeçalho de cada notícia */
+            .cabecalho-noticia {
+                display: flex; /* Define o cabeçalho como flexível */
+
+                /* Estilos para a data da notícia */
+                .data-noticia {
+                    font-size: 10px; /* Define o tamanho da fonte */
+                    font-family: sans-serif; /* Define a família da fonte */
+                    font-weight: normal; /* Define o peso da fonte */
+                    color: grey; /* Define a cor do texto */
+                    opacity: 30; /* Define a opacidade */
+                    margin-left: 8px; /* Adiciona margem à esquerda */
+                }
+
+                /* Estilos para o usuário da notícia */
+                .usuario-noticia {
+                    font-size: 10px; /* Define o tamanho da fonte */
+                    font-family: sans-serif; /* Define a família da fonte */
+                    font-weight: normal; /* Define o peso da fonte */
+                    color: grey; /* Define a cor do texto */
+                    opacity: 30; /* Define a opacidade */
+                    margin-left: 8px; /* Adiciona margem à esquerda */
+                }
+            }
+
+            .texto-noticia{
+                font-size: 14px; /* Define o tamanho da fonte */
+                font-family: sans-serif; /* Define a família da fonte */
+                font-weight: 500; /* Define o peso da fonte */
+                color: grey; /* Define a cor do texto */
+                padding: 16px;
+            
+            }
+        }
+    }
